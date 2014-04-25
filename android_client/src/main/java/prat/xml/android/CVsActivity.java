@@ -1,6 +1,10 @@
 package prat.xml.android;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import classes.manager.CVManager;
 import classes.model.CV;
+import com.sun.javaws.progress.Progress;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,12 +43,27 @@ public class CVsActivity  extends Activity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), " " + position, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), " " + position, Toast.LENGTH_SHORT).show();
+                // On créé une activity
+                Intent i = new Intent(CVsActivity.this, CVActivity.class);
+
+                // On passe des arguments
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", position);
+                i.putExtras(bundle);
+
+                // On la démarre
+                startActivity(i);
             }
         });
     }
 
+
+
     private class Connection extends AsyncTask {
+
+        private Connection() {
+        }
 
         @Override
         protected Object doInBackground(Object... arg0) {
@@ -55,6 +75,18 @@ public class CVsActivity  extends Activity {
         protected void onPostExecute(Object result) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(CVsActivity.this, android.R.layout.simple_list_item_1, val);
             list.setAdapter(adapter);
+            Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected void onProgressUpdate(Object... values){
+            super.onProgressUpdate(values);
         }
 
     }

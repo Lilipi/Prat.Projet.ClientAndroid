@@ -4,6 +4,6 @@
     <string name="app_name">Hello Maven</string>
     <string name="hello">Hello android_client!</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string><string name="Voir_Tous">Voir tous les CV</string><string name="Ajouter">Ajouter un CV</string>
+    <string name="hello_world">Hello world!</string><string name="Voir_Tous">Voir tous les CV</string><string name="Ajouter">Ajouter un CV</string><string name="Formation">Formation</string><string name="Experience">Experience</string><string name="Compétences">Compétences</string><string name="Langues">Langues</string>
 
 </resources>
