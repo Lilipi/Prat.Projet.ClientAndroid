@@ -13,6 +13,9 @@ public class Skill {
 
     @Element
     private String name;
+    @Element
+    private int level;
+    private static final int MAX_LEVEL = 20;
 
     public String getName() {
         return name;
@@ -22,11 +25,26 @@ public class Skill {
         this.name = name;
     }
 
-    public Skill(String name) {
+    public Skill(String name, int level) {
         this.name = name;
+        setLevel(level);
     }
 
     public Skill() {
 
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        if (level < 0) {
+            this.level = 0;
+        } else if (level > MAX_LEVEL) {
+            this.level = MAX_LEVEL;
+        } else {
+            this.level = level;
+        }
     }
 }

@@ -9,6 +9,7 @@ import classes.manager.CVManager;
 import classes.model.CV;
 import classes.model.Degree;
 import classes.model.Experience;
+import classes.model.Skill;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -102,10 +103,87 @@ public class CVActivity extends Activity {
                 degrees.addView(item);
              }
 
+            listItem = new ArrayList<HashMap<String, String>>();
+
             //Récupération de la listview créée dans le fichier main.xml
             LinearLayout exp = (LinearLayout) findViewById(R.id.listExperience);
 
-            /*Faire pareil pour experience, compétence et langue + créer les layouts */
+            for (Experience e : cv.getExperiences().getExperience()) {
+                //Création d'une HashMap pour insérer les informations du premier item de notre listView
+                map = new HashMap<String, String>();
+                //on insère un élément titre que l'on récupérera dans le textView titre créé dans le fichier affichageitem.xml
+                map.put("titre", e.getTitle());
+                //on insère un élément description que l'on récupérera dans le textView description créé dans le fichier affichageitem.xml
+                map.put("description", e.getDescription());
+                String res = "";
+                if (e.getBeginMonth() != null) {
+                    res += e.getBeginMonth() + " ";
+                }
+                res += e.getBeginYear() + " à ";
+                if (e.getEndMonth() != null) {
+                    res += e.getEndMonth() + " ";
+                }
+                res += e.getEndYear();
+
+                map.put("duree", res);
+
+                map.put("entreprise", e.getCompany() + ", " + e.getLocation());
+
+                //enfin on ajoute cette hashMap dans la arrayList
+                listItem.add(map);
+
+            }
+
+
+            //Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichageitem
+            SimpleAdapter adapter = new SimpleAdapter (getBaseContext(), listItem, R.layout.affichage_experience,
+                    new String[] {"titre", "duree", "entreprise", "description"}, new int[] {R.id.titre, R.id.duree, R.id.entreprise, R.id.description});
+
+            //On attribut à notre listView l'adapter que l'on vient de créer
+            for (int i = 0; i < adapter.getCount(); i++) {
+                View item = adapter.getView(i, null, null);
+                exp.addView(item);
+            }
+
+
+            listItem = new ArrayList<HashMap<String, String>>();
+
+            //Récupération de la listview créée dans le fichier main.xml
+            LinearLayout skills = (LinearLayout) findViewById(R.id.listCompetence);
+
+            for (Skill s : cv.getSkills().getSkill()) {
+                //Création d'une HashMap pour insérer les informations du premier item de notre listView
+                map = new HashMap<String, String>();
+                //on insère un élément titre que l'on récupérera dans le textView titre créé dans le fichier affichageitem.xml
+                map.put("nom_competence", s.getName());
+                map.put("level", " " + s.getLevel());
+
+                //enfin on ajoute cette hashMap dans la arrayList
+                listItem.add(map);
+
+            }
+
+
+
+            //Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichageitem
+            SimpleAdapter skilladapter = new SimpleAdapter (getBaseContext(), listItem, R.layout.affichage_competence,
+                    new String[] {"nom_competence", "level"}, new int[] {R.id.nom_competence, R.id.ratingbar});
+            //On attribut à notre listView l'adapter que l'on vient de créer
+            //degrees.setAdapter(mSchedule);
+
+            skilladapter.setViewBinder(new MyBinder());
+
+            //On attribut à notre listView l'adapter que l'on vient de créer
+            for (int i = 0; i < skilladapter.getCount(); i++) {
+                View item = skilladapter.getView(i, null, null);
+                skills.addView(item);
+            }
+
+           /* for (int i = 0; i < skilladapter.getCount(); i++) {
+                View item = skilladapter.getView(i, null, null);
+                skills.addView(item);
+            }*/
+            /*Faire pareil pour compétence et langue + créer les layouts */
 
             /*String val = new String[cv.getDegrees().];
             for (int i = 0; i < val.length; i++) {
@@ -114,6 +192,8 @@ public class CVActivity extends Activity {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(CVActivity.this, R.id.listformation, val);
             list.setAdapter(adapter);*/
+
+
 
             Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
         }
@@ -139,5 +219,19 @@ public class CVActivity extends Activity {
 
         cv = restTemplate.getForObject(url, CV.class);
 
+    }
+
+    class MyBinder implements SimpleAdapter.ViewBinder {
+        @Override
+        public boolean setViewValue(View view, Object data, String textRepresentation) {
+            if(view.getId() == R.id.ratingbar){
+                String stringval = (String) data;
+                float ratingValue = Float.parseFloat(stringval);
+                RatingBar ratingBar = (RatingBar) view;
+                ratingBar.setRating(ratingValue);
+                return true;
+            }
+            return false;
+        }
     }
 }

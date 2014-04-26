@@ -6,43 +6,53 @@
               android:layout_height="match_parent" android:weightSum="1">
 
     <TextView
-            android:layout_width="413dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/titre" android:layout_weight="0.08"/>
+            android:id="@+id/titre" android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/mention" android:layout_weight="0.00"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_weight="0.04">
+            android:layout_height="wrap_content">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/debut" android:layout_weight="0.08"/>
+                android:id="@+id/debut"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:id="@+id/textView"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/fin" android:layout_weight="0.08"/>
+                android:id="@+id/fin"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" à "
+                android:id="@+id/textView2"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/location"/>
     </LinearLayout>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/mention" android:layout_weight="0.08"/>
+            android:id="@+id/school"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/school" android:layout_weight="0.08"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/location" android:layout_weight="0.08"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="New Text"
-            android:id="@+id/description"/>
+            android:id="@+id/description" android:layout_weight="0.09"/>
 </LinearLayout>
