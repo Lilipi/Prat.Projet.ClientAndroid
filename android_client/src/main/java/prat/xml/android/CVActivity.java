@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import classes.manager.CVManager;
-import classes.model.CV;
-import classes.model.Degree;
-import classes.model.Experience;
-import classes.model.Skill;
+import classes.model.*;
 import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -171,12 +168,45 @@ public class CVActivity extends Activity {
             //On attribut à notre listView l'adapter que l'on vient de créer
             //degrees.setAdapter(mSchedule);
 
-            skilladapter.setViewBinder(new MyBinder());
+            skilladapter.setViewBinder(new MyBinderSkill());
 
             //On attribut à notre listView l'adapter que l'on vient de créer
             for (int i = 0; i < skilladapter.getCount(); i++) {
                 View item = skilladapter.getView(i, null, null);
                 skills.addView(item);
+            }
+
+            listItem = new ArrayList<HashMap<String, String>>();
+
+            //Récupération de la listview créée dans le fichier main.xml
+            LinearLayout languages = (LinearLayout) findViewById(R.id.listLangue);
+
+            for (Language l : cv.getLanguages().getLanguage()) {
+                //Création d'une HashMap pour insérer les informations du premier item de notre listView
+                map = new HashMap<String, String>();
+                //on insère un élément titre que l'on récupérera dans le textView titre créé dans le fichier affichageitem.xml
+                map.put("nom_competence", l.getName());
+                map.put("level", " " + l.getLevel());
+
+                //enfin on ajoute cette hashMap dans la arrayList
+                listItem.add(map);
+
+            }
+
+
+
+            //Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichageitem
+            SimpleAdapter languageadapter = new SimpleAdapter (getBaseContext(), listItem, R.layout.affichage_competence,
+                    new String[] {"nom_competence", "level"}, new int[] {R.id.nom_competence, R.id.ratingbar});
+            //On attribut à notre listView l'adapter que l'on vient de créer
+            //degrees.setAdapter(mSchedule);
+
+            languageadapter.setViewBinder(new MyBinderLanguage());
+
+            //On attribut à notre listView l'adapter que l'on vient de créer
+            for (int i = 0; i < languageadapter.getCount(); i++) {
+                View item = languageadapter.getView(i, null, null);
+                languages.addView(item);
             }
 
            /* for (int i = 0; i < skilladapter.getCount(); i++) {
@@ -221,13 +251,30 @@ public class CVActivity extends Activity {
 
     }
 
-    class MyBinder implements SimpleAdapter.ViewBinder {
+    class MyBinderSkill implements SimpleAdapter.ViewBinder {
         @Override
         public boolean setViewValue(View view, Object data, String textRepresentation) {
             if(view.getId() == R.id.ratingbar){
                 String stringval = (String) data;
-                float ratingValue = Float.parseFloat(stringval);
+                float value =  Float.parseFloat(stringval);
                 RatingBar ratingBar = (RatingBar) view;
+                float ratingValue = value / (float)Skill.MAX_LEVEL * (float)ratingBar.getNumStars();
+                ratingBar.setRating(ratingValue);
+                return true;
+            }
+            return false;
+        }
+    }
+
+
+    class MyBinderLanguage implements SimpleAdapter.ViewBinder {
+        @Override
+        public boolean setViewValue(View view, Object data, String textRepresentation) {
+            if(view.getId() == R.id.ratingbar){
+                String stringval = (String) data;
+                float value =  Float.parseFloat(stringval);
+                RatingBar ratingBar = (RatingBar) view;
+                float ratingValue = value / (float)Language.MAX_LEVEL * (float)ratingBar.getNumStars();
                 ratingBar.setRating(ratingValue);
                 return true;
             }

@@ -29,6 +29,15 @@ public class ActivityMain extends Activity {
                 startActivity(i);
             }
         });
+
+        Button add = (Button) findViewById(R.id.button2);
+        add.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ActivityMain.this, AddCVActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

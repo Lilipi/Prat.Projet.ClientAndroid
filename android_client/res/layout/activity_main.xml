@@ -1,15 +1,16 @@
 <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        >
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Voir_Tous"
-            android:id="@+id/button"/>
+            android:id="@+id/button" android:textColor="#030303"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Ajouter"
-            android:id="@+id/button2"/>
+            android:id="@+id/button2" android:textColor="#000000"/>
 </LinearLayout>
