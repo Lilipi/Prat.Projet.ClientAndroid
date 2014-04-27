@@ -23,12 +23,37 @@ public class AddCVActivity extends Activity {
     // The connection URL
     private String url = "http://cv.lilipi.cloudbees.net/cv";
 
+    private LinearLayout mLayout;
+    private EditText mEditText;
+    private Button mButton;
+    private int cptDiplome = 0;
+
     // Create a new RestTemplate instance
     private RestTemplate restTemplate;
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.add_cv);
+
+        mLayout = (LinearLayout) findViewById(R.id.addDiplome);
+        mEditText = (EditText) findViewById(R.id.editText);
+        mButton = (Button) findViewById(R.id.add2);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mLayout.addView(createNewTextView("Diplôme", cptDiplome));
+                mLayout.addView(createNewEditText("Titre", cptDiplome));
+                mLayout.addView(createNewEditText("Début", cptDiplome));
+                mLayout.addView(createNewEditText("Fin", cptDiplome));
+                mLayout.addView(createNewEditText("Mention(Optionnelle)", cptDiplome));
+                mLayout.addView(createNewEditText("Lieux", cptDiplome));
+                mLayout.addView(createNewEditText("Ecole", cptDiplome));
+                mLayout.addView(createNewEditText("Description", cptDiplome));
+                cptDiplome++;
+
+            }
+        });
 
      /*   Bundle bundle2 = getIntent().getExtras();
         int id = bundle2.getInt("id");
@@ -37,6 +62,28 @@ public class AddCVActivity extends Activity {
 
         new Connection().execute();
 
+    }
+
+    private EditText createNewEditText(String text, int i) {
+        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final EditText textView = new EditText(this);
+        textView.setLayoutParams(lparams);
+        textView.setText(text);
+        textView.setId(i);
+        if (text == "Description") {
+            textView.setSingleLine(false);
+        }
+        return textView;
+    }
+
+    private TextView createNewTextView(String text, int i) {
+        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final TextView textView = new TextView(this);
+        textView.setLayoutParams(lparams);
+        textView.setText(text);
+        textView.setId(i);
+
+        return textView;
     }
 
     private class Connection extends AsyncTask {
@@ -53,13 +100,13 @@ public class AddCVActivity extends Activity {
         @Override
         protected void onPostExecute(Object result) {
 
-            Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
         }
 
         @Override

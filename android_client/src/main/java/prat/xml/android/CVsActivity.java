@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class CVsActivity  extends Activity {
 
+    ProgressDialog progress;
     private ListView list;
 
     private String[] val;
@@ -75,13 +76,19 @@ public class CVsActivity  extends Activity {
         protected void onPostExecute(Object result) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(CVsActivity.this, android.R.layout.simple_list_item_1, val);
             list.setAdapter(adapter);
-            Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
+            if (progress.isShowing()) {
+                progress.dismiss();
+            }
+            //Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
+            progress = new ProgressDialog(CVsActivity.this);
+            progress.setMessage("Chargement en cours...");
+            progress.show();
+            //Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
         }
 
         @Override

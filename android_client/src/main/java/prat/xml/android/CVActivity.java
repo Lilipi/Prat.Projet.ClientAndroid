@@ -1,6 +1,7 @@
 package prat.xml.android;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ import java.util.List;
 public class CVActivity extends Activity {
 
     private CV cv;
+    ProgressDialog progress;
 
     // The connection URL
     private String url = "http://cv.lilipi.cloudbees.net/cv";
@@ -224,14 +226,19 @@ public class CVActivity extends Activity {
             list.setAdapter(adapter);*/
 
 
-
-            Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
+            if (progress.isShowing()) {
+                progress.dismiss();
+            }
+            //Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
+            progress = new ProgressDialog(CVActivity.this);
+            progress.setMessage("Chargement en cours...");
+            progress.show();
+           // Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
         }
 
         @Override
