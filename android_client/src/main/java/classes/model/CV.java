@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Created by Emilie on 01/04/14.
  */
-@Root(name="resume")
+@Root(name="cv")
 public class CV {
 
     @Element
@@ -90,7 +90,8 @@ public class CV {
     }
 
     public CV() {
-
+        nom ="ntest";
+        prenom="ptest";
     }
 
 }

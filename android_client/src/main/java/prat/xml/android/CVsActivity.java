@@ -105,7 +105,7 @@ public class CVsActivity  extends Activity {
         restTemplate.getMessageConverters().add(new SimpleXmlHttpMessageConverter());
 
         CVManager CVManager = restTemplate.getForObject(url, CVManager.class);
-        List<CV> CVs = CVManager.getResume();
+        List<CV> CVs = CVManager.getCv();
 
         val = new String[CVs.size()];
         for (int i = 0; i < val.length; i++) {

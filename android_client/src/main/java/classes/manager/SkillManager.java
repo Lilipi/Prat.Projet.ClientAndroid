@@ -14,7 +14,7 @@ import java.util.List;
 @Root(name="skills")
 public class SkillManager {
 
-    @ElementList(inline =true)
+    @ElementList(required=false, inline =true)
     private List<Skill> skill;
 
     public SkillManager(List<Skill> skill) {

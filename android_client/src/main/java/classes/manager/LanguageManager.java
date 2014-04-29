@@ -14,7 +14,7 @@ import java.util.List;
 @Root(name="languages")
 public class LanguageManager {
 
-    @ElementList(inline =true)
+    @ElementList(required=false, inline =true)
     private List<Language> language;
 
     public LanguageManager(List<Language> language) {

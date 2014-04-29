@@ -14,7 +14,7 @@ import java.util.List;
 @Root(name="experiences")
 public class ExperienceManager {
 
-    @ElementList(inline =true)
+    @ElementList(required=false, inline =true)
     private List<Experience> experience;
 
     public ExperienceManager(List<Experience> experience) {

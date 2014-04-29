@@ -15,7 +15,7 @@ import java.util.List;
 @Root(name="degrees")
 public class DegreeManager {
 
-    @ElementList(inline =true)
+    @ElementList(required=false, inline =true)
     private List<Degree> degree;
 
     public List<Degree> getDegree() {

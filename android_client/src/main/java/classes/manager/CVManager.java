@@ -14,23 +14,25 @@ import java.util.List;
 @Root(name="CVs")
 public class CVManager {
 
-    @ElementList(inline =true)
-    private List<CV> resume;
+    @ElementList(inline =true, required =false)
+    private List<CV> cv;
 
-    public List<CV> getResume() {
-        return resume;
+    public List<CV> getCv() {
+        return cv;
     }
 
-    public void setResume(List<CV> resume) {
-        this.resume = resume;
+    public void addCv(CV cv) {this.cv.add(cv);}
+
+    public void setCv(List<CV> cv) {
+        this.cv = cv;
     }
 
     public CVManager() {
-        resume = new ArrayList<CV>();
+        cv = new ArrayList<CV>();
     }
 
     public CVManager(List<CV> cv) {
-        this.resume = cv;
+        this.cv = cv;
     }
 
 }

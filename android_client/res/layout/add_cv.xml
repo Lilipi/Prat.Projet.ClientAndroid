@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/prenom" android:text="Prénom" android:singleLine="false"
-                    />
+                    android:inputType="text"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -35,36 +35,36 @@
                     android:text="Diplôme"
                     android:id="@+id/textView"/>
             <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/titre"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Titre"/>
+                    android:text="Titre" android:inputType="text"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText2" android:text="Début"/>
+                    android:id="@+id/debut" android:text="Début" android:inputType="number"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText3" android:text="Fin"/>
+                    android:id="@+id/fin" android:text="Fin" android:inputType="number"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText4" android:text="Mention(optionnelle)"/>
+                    android:id="@+id/mention" android:text="Mention(optionnelle)" android:inputType="text"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText5" android:text="Lieux"/>
+                    android:id="@+id/lieu" android:text="Lieu" android:inputType="text"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText6" android:text="Ecole"/>
+                    android:id="@+id/ecole" android:text="Ecole" android:inputType="text"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:ems="10"
-                    android:id="@+id/editText7" android:text="Description"/>
+                    android:id="@+id/description" android:text="Description"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
