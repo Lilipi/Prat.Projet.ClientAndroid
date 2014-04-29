@@ -20,62 +20,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="Nom"
                     android:ems="10"
-                    android:id="@+id/nom"/>
+                    android:id="@+id/nom" android:hint="Nom" android:singleLine="true"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/prenom" android:text="Prénom" android:singleLine="false"
-                    android:inputType="text"/>
+                    android:id="@+id/prenom" android:singleLine="true"
+                    android:inputType="text" android:hint="Prénom"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diplôme"
+                    android:text="Diplômes"
                     android:id="@+id/textView"/>
-            <EditText
-                    android:id="@+id/titre"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Titre" android:inputType="text"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/debut" android:text="Début" android:inputType="number"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/fin" android:text="Fin" android:inputType="number"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/mention" android:text="Mention(optionnelle)" android:inputType="text"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lieu" android:text="Lieu" android:inputType="text"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ecole" android:text="Ecole" android:inputType="text"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:ems="10"
-                    android:id="@+id/description" android:text="Description"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@id/addDiplome">
             </LinearLayout>
-            <Button
-                    android:id="@+id/add2"
+            <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add+"
-                    android:layout_gravity="right"/>
+                    android:id="@+id/add2" android:layout_gravity="right"
+                    android:src="@android:drawable/ic_input_add"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expériences"
+                    android:id="@+id/textView2"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@id/addExp">
+            </LinearLayout>
+            <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/addExp"
+                         android:layout_gravity="right" android:src="@android:drawable/ic_input_add"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Compétences" android:id="@+id/textView3"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@id/addSkill">
+            </LinearLayout>
+            <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                         android:id="@+id/addComp" android:layout_gravity="right"
+                         android:src="@android:drawable/ic_input_add"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

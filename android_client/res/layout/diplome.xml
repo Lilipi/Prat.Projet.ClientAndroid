@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:weightSum="1">
+        <EditText android:id="@+id/titre" android:layout_width="266dp" android:layout_height="wrap_content"
+                  android:inputType="text" android:layout_weight="0.93"
+                  android:hint="Titre" android:singleLine="true"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/suppr" android:src="@android:drawable/ic_delete" android:layout_gravity="right"/>
+    </LinearLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Année"
+            android:id="@+id/textView"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/debut"
+                  android:inputType="number" android:layout_weight="1"
+                  android:hint="Début"
+                  android:numeric="integer" android:singleLine="true" android:maxLength="4"/>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/fin"
+                  android:inputType="number" android:layout_weight="1" android:hint="Fin (optionnelle)"
+                  android:numeric="integer" android:singleLine="true" android:maxLength="4"/>
+    </LinearLayout>
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/mention"
+              android:inputType="text" android:singleLine="true" android:hint="Mention(optionnelle)"/>
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/lieu"
+              android:inputType="text" android:hint="Lieu" android:singleLine="true"/>
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/ecole"
+              android:inputType="text" android:hint="Ecole" android:singleLine="true"/>
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine"
+              android:ems="10" android:id="@+id/description" android:singleLine="false" android:hint="Description"/>
+</LinearLayout>

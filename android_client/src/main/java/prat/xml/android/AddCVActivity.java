@@ -32,7 +32,7 @@ public class AddCVActivity extends Activity {
     private String url = "http://cv.lilipi.cloudbees.net/cv/put";
 
     private LinearLayout mLayout;
-    private Button mButton;
+    private ImageButton mButton;
     private int cptDiplome = 0;
 
     // Create a new RestTemplate instance
@@ -47,12 +47,23 @@ public class AddCVActivity extends Activity {
 
 
         mLayout = (LinearLayout) findViewById(R.id.addDiplome);
-        mButton = (Button) findViewById(R.id.add2);
+        mButton = (ImageButton) findViewById(R.id.add2);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mLayout.addView(createNewTextView("Diplôme", cptDiplome));
+                final LinearLayout diplome = (LinearLayout)findViewById(R.id.addDiplome);
+                final View view = View.inflate(AddCVActivity.this, R.layout.diplome, null);
+                ImageButton supp = (ImageButton) view.findViewById(R.id.suppr);
+                supp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        diplome.removeView(view);
+                    }
+
+                });
+                diplome.addView(view);
+             /*   mLayout.addView(createNewTextView("Diplôme", cptDiplome));
                 mLayout.addView(createNewEditText("Titre", cptDiplome));
                 mLayout.addView(createNewEditText("Début", cptDiplome));
                 mLayout.addView(createNewEditText("Fin", cptDiplome));
@@ -60,7 +71,28 @@ public class AddCVActivity extends Activity {
                 mLayout.addView(createNewEditText("Lieu", cptDiplome));
                 mLayout.addView(createNewEditText("Ecole", cptDiplome));
                 mLayout.addView(createNewEditText("Description", cptDiplome));
-                cptDiplome++;
+                cptDiplome++;*/
+
+            }
+        });
+
+        mLayout = (LinearLayout) findViewById(R.id.addSkill);
+        mButton = (ImageButton) findViewById(R.id.addComp);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final LinearLayout skills = (LinearLayout)findViewById(R.id.addSkill);
+                final View view = View.inflate(AddCVActivity.this, R.layout.skill, null);
+                ImageButton supp = (ImageButton) view.findViewById(R.id.suppr);
+                supp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        skills.removeView(view);
+                    }
+
+                });
+                skills.addView(view);
 
             }
         });
@@ -96,7 +128,7 @@ public class AddCVActivity extends Activity {
 //        new Connection().execute();
 
     }
-
+/*
     private EditText createNewEditText(String text, int i) {
         final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         final EditText textView = new EditText(this);
@@ -119,7 +151,7 @@ public class AddCVActivity extends Activity {
         textView.setId(i);
 
         return textView;
-    }
+    }*/
 
   /*  private class Connection extends AsyncTask {
 
