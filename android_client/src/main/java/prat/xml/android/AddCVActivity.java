@@ -68,16 +68,6 @@ public class AddCVActivity extends Activity {
                 diplome.addView(view);
                 addMentionItemsOnSpinner(view);
 
-             /*   mLayout.addView(createNewTextView("Diplôme", cptDiplome));
-                mLayout.addView(createNewEditText("Titre", cptDiplome));
-                mLayout.addView(createNewEditText("Début", cptDiplome));
-                mLayout.addView(createNewEditText("Fin", cptDiplome));
-                mLayout.addView(createNewEditText("Mention(Optionnelle)", cptDiplome));
-                mLayout.addView(createNewEditText("Lieu", cptDiplome));
-                mLayout.addView(createNewEditText("Ecole", cptDiplome));
-                mLayout.addView(createNewEditText("Description", cptDiplome));
-                cptDiplome++;*/
-
             }
         });
 
@@ -200,21 +190,50 @@ public class AddCVActivity extends Activity {
                     Experience exp = new Experience(titre, debutM, debut, finM, fin, lieu, entreprise, description);
                     expList.add(exp);
 
-                    }
+                }
 
                 ExperienceManager exp = new ExperienceManager(expList);
 
-                SkillManager skill = new SkillManager();
-                LanguageManager lg = new LanguageManager();
+                LinearLayout skills = (LinearLayout) findViewById(R.id.addSkill);
+                int c = skills.getChildCount();
 
-              /*  try {
+                List<Skill> skillList = new ArrayList<Skill>();
+                for (int i=0; i < c; i++){
+                    View view = skills.getChildAt(i);
+                    String titre = ((EditText)view.findViewById(R.id.nom)).getText().toString();
+                    float level = ((RatingBar)view.findViewById(R.id.ratingBar)).getRating();
+
+                    Skill s = new Skill(titre, level);
+                    skillList.add(s);
+
+                }
+
+                SkillManager skill = new SkillManager(skillList);
+
+                LinearLayout languages = (LinearLayout) findViewById(R.id.addLangue);
+                int cpt = languages.getChildCount();
+
+                List<Language> langList = new ArrayList<Language>();
+                for (int i=0; i < cpt; i++){
+                    View view = languages.getChildAt(i);
+                    String titre = ((EditText)view.findViewById(R.id.nom)).getText().toString();
+                    float level = ((RatingBar)view.findViewById(R.id.ratingBar)).getRating();
+
+                    Language l = new Language(titre, level);
+                    langList.add(l);
+
+                }
+
+                LanguageManager lg = new LanguageManager(langList);
+
+                try {
                     Log.i("TEST", url);
-                    cv = new CV();
+                    cv = new CV(nom, prenom, exp, skill, deg, lg);
                     restTemplate.put(url, cv);//, CV.class);
 
                 } catch (Exception e) {
                     Log.i("TEST", e.getMessage());
-                }*/
+                }
 
             }
         });
@@ -341,25 +360,4 @@ public class AddCVActivity extends Activity {
         mention.setAdapter(dataAdapter);
     }
 
-    // get the selected dropdown list value
-  /*  public void addListenerOnButton() {
-
-         = (Spinner) findViewById(R.id.spinner1);
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
-
-        btnSubmit.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(MyAndroidAppActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()) +
-                                "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-            }
-
-        });
-    }*/
 }
