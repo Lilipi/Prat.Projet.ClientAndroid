@@ -78,12 +78,18 @@ public class CVActivity extends Activity {
                 //on insère un élément titre que l'on récupérera dans le textView titre créé dans le fichier affichageitem.xml
                 map.put("titre", d.getTitle());
                 //on insère un élément description que l'on récupérera dans le textView description créé dans le fichier affichageitem.xml
-                map.put("description", d.getDescription());
+                if (d.getDescription() != null && d.getDescription().length() != 0) {
+                    map.put("description", d.getDescription());
+                }
                 map.put("beginYear", ""+ d.getBeginYear());
-                map.put("endYear", ""+d.getEndYear());
+                if (d.getEndYear() == 0) {
+                    map.put("endYear", "En cours");
+                } else {
+                    map.put("endYear", ""+d.getEndYear());
+                    map.put("mention",d.getMention().toString());
+                }
                 map.put("location", d.getLocation());
                 map.put("school", d.getSchool());
-                map.put("mention",d.getMention().toString());
 
                 //enfin on ajoute cette hashMap dans la arrayList
                 listItem.add(map);
@@ -113,16 +119,17 @@ public class CVActivity extends Activity {
                 //on insère un élément titre que l'on récupérera dans le textView titre créé dans le fichier affichageitem.xml
                 map.put("titre", e.getTitle());
                 //on insère un élément description que l'on récupérera dans le textView description créé dans le fichier affichageitem.xml
-                map.put("description", e.getDescription());
+                if (e.getDescription() != null && e.getDescription().length() != 0) {
+                    map.put("description", e.getDescription());
+                }
                 String res = "";
-                if (e.getBeginMonth() != null) {
-                    res += e.getBeginMonth() + " ";
-                }
+                res += e.getBeginMonth() + " ";
                 res += e.getBeginYear() + " à ";
-                if (e.getEndMonth() != null) {
-                    res += e.getEndMonth() + " ";
+
+                res += e.getEndMonth() + " ";
+                if (e.getEndYear() != 0) {
+                    res += e.getEndYear();
                 }
-                res += e.getEndYear();
 
                 map.put("duree", res);
 

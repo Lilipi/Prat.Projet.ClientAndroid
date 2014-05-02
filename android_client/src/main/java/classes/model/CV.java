@@ -90,8 +90,6 @@ public class CV {
     }
 
     public CV() {
-        nom ="ntest";
-        prenom="ptest";
     }
 
 }

@@ -17,7 +17,7 @@ public class Language {
     @Element
     private float level;
 
-    public final static int MAX_LEVEL = 20;
+    public final static int MAX_LEVEL = 5;
 
     public Language(String name, float level) {
         this.name = name;

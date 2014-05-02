@@ -35,7 +35,7 @@
                 android:layout_width="219dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/debutAnnee"
-                android:singleLine="true" android:hint="Année"/>
+                android:singleLine="true" android:hint="Année" android:inputType="number" android:maxLength="4"/>
     </LinearLayout>
     <TextView
             android:layout_width="wrap_content"
@@ -53,7 +53,8 @@
         <EditText
                 android:layout_width="219dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/finAnnee" android:layout_weight="1.36" android:singleLine="true" android:hint="Année"/>
+                android:id="@+id/finAnnee" android:layout_weight="1.36" android:singleLine="true" android:hint="Année(optionnelle)"
+                android:maxLength="4" android:inputType="number"/>
     </LinearLayout>
     <EditText
             android:layout_width="match_parent"
