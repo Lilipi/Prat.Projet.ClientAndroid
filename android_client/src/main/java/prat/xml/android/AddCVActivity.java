@@ -287,8 +287,8 @@ public class AddCVActivity extends Activity {
                     String finM = ((Spinner)view.findViewById(R.id.spinnerFin)).getSelectedItem().toString();
 
                     int fin;
-                    if (((EditText)view.findViewById(R.id.finAnnee)).getText() != null && !(((EditText)view.findViewById(R.id.finAnnee)).getText().toString().length() == 0) ) {
-                        fin = Integer.parseInt(((EditText)view.findViewById(R.id.fin)).getText().toString());
+                    if (((EditText)view.findViewById(R.id.finAnnee)).getText().toString() != null && !(((EditText)view.findViewById(R.id.finAnnee)).getText().toString().length() == 0) ) {
+                        fin = Integer.parseInt(((EditText)view.findViewById(R.id.finAnnee)).getText().toString());
                        /* if (fin > annee) {
                             error = true;
                             msg += "La fin de l'expérience " + (i + 1) + " doit être antérieur à la date du jour ou vide si en cours. \n";
@@ -303,7 +303,7 @@ public class AddCVActivity extends Activity {
                     }
 
                     int debut = 0;
-                    if (((EditText) view.findViewById(R.id.debutAnnee)).getText() != null && !(((EditText) view.findViewById(R.id.debutAnnee)).getText().toString().length() == 0)) {
+                    if (((EditText) view.findViewById(R.id.debutAnnee)).getText().toString() != null && !(((EditText) view.findViewById(R.id.debutAnnee)).getText().toString().length() == 0)) {
                         debut = Integer.parseInt(((EditText) view.findViewById(R.id.debutAnnee)).getText().toString());
 
                       /*  if (debut > fin && fin != 0) {
