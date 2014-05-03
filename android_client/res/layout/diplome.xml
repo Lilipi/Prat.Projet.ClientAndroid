@@ -10,8 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:weightSum="1">
         <EditText android:id="@+id/titre" android:layout_width="266dp" android:layout_height="wrap_content"
-                  android:inputType="textCapWords" android:layout_weight="0.93"
-                  android:hint="Titre" android:singleLine="true"/>
+                  android:layout_weight="0.93"
+                  android:hint="Titre" android:singleLine="true" android:inputType="textCapSentences"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,9 +49,9 @@
                 android:layout_height="wrap_content" />
     </LinearLayout>
     <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/lieu"
-              android:inputType="textCapWords" android:hint="Lieu" android:singleLine="true"/>
+              android:hint="Lieu" android:singleLine="true" android:inputType="textCapSentences"/>
     <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/ecole"
-              android:inputType="textCapWords" android:hint="Ecole" android:singleLine="true"/>
-    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine|textCapWords"
+              android:hint="Ecole" android:singleLine="true" android:inputType="textCapSentences"/>
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine|textCapSentences"
               android:ems="10" android:id="@+id/description" android:singleLine="false" android:hint="Description(optionnelle)"/>
 </LinearLayout>

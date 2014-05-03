@@ -13,7 +13,7 @@
                 android:layout_width="293dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/titre" android:hint="Titre" android:singleLine="true" android:layout_weight="1.01"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textCapSentences"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,16 +60,16 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lieu" android:singleLine="true" android:hint="Lieu" android:inputType="textCapCharacters"/>
+            android:id="@+id/lieu" android:singleLine="true" android:hint="Lieu" android:inputType="textCapSentences"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/entreprise" android:hint="Entreprise" android:singleLine="true"
-            android:inputType="textCapCharacters"/>
+            android:inputType="textCapSentences"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapCharacters|textMultiLine"
+            android:inputType="textMultiLine|textCapSentences"
             android:ems="10"
             android:id="@+id/description" android:hint="Description(optionnelle)"/>
 </LinearLayout>

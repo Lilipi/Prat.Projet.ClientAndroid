@@ -14,6 +14,7 @@ import classes.manager.LanguageManager;
 import classes.manager.SkillManager;
 import classes.model.*;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -51,6 +52,7 @@ public class AddCVActivity extends Activity {
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        System.setProperty("http.keepAlive", "false");
 
         final Calendar c = Calendar.getInstance();
         annee = c.get(Calendar.YEAR);
@@ -58,12 +60,12 @@ public class AddCVActivity extends Activity {
         mois++;
 
         setContentView(R.layout.add_cv);
-        restTemplate = new RestTemplate();
+       /* restTemplate = new RestTemplate();
 
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
         restTemplate.getMessageConverters().add(new SimpleXmlHttpMessageConverter());
 
-
+        */
 
         mLayout = (LinearLayout) findViewById(R.id.addDiplome);
         mButton = (ImageButton) findViewById(R.id.add2);
@@ -418,8 +420,10 @@ public class AddCVActivity extends Activity {
 
                 if (error == false) {
 
+                    new Connection().execute();
+
                     // Make the HTTP PUT request, marshaling the request to XML
-                    HttpEntity<CV> requestEntity = new HttpEntity<CV>(cv);
+                   /* HttpEntity<CV> requestEntity = new HttpEntity<CV>(cv);
                     try {
                         Log.i("TEST", "try");
                         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
@@ -428,19 +432,23 @@ public class AddCVActivity extends Activity {
                                 response.getBody(),
                                 Toast.LENGTH_LONG
                         ).show();
-                        final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
-                        final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
-                        Button add = (Button) findViewById(R.id.creer);
-                        add.setClickable(false);
-                        add.setEnabled(false);
-                        Button retour = (Button) view.findViewById(R.id.retour);
-                        retour.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
-                                startActivity(i);
-                            }
-                        });
+                        if (response.getBody().equals("Ajout effectué avec succès !")) {
+                            final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
+                            final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
+                            Button add = (Button) findViewById(R.id.creer);
+                            add.setClickable(false);
+                            add.setEnabled(false);
+                            Button retour = (Button) view.findViewById(R.id.retour);
+                            retour.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
+                                    startActivity(i);
+                                }
+                            });
+                            boutonLayout.addView(view);
+                        }
+
                         /*
                         ImageButton supp = (ImageButton) view.findViewById(R.id.suppr);
                         supp.setOnClickListener(new View.OnClickListener() {
@@ -450,14 +458,20 @@ public class AddCVActivity extends Activity {
                             }
 
                         });*/
-                        boutonLayout.addView(view);
-                    } catch (Exception e) {
+
+                   /* } catch (Exception e) {
+                    //    Log.i("TEST", e.getMessage());
+                        StringWriter stringWriter = new StringWriter();
+                        String stackTrace = null;
+                        e.printStackTrace(new PrintWriter(stringWriter));
+                        stackTrace = stringWriter.toString();
+                        Log.i("TEST",  stackTrace);
                         Toast.makeText(
                                 getApplicationContext(),
                                 "Erreur lors de l'ajout du CV",
                                 Toast.LENGTH_LONG
                         ).show();
-                    }
+                    }*/
                 } else {
                     Toast.makeText(
                             getApplicationContext(),
@@ -533,7 +547,9 @@ public class AddCVActivity extends Activity {
         return textView;
     }*/
 
-  /*  private class Connection extends AsyncTask {
+    private class Connection extends AsyncTask {
+
+        private String message = "";
 
         private Connection() {
         }
@@ -541,15 +557,97 @@ public class AddCVActivity extends Activity {
         @Override
         protected Object doInBackground(Object... arg0) {
             connect();
+            // Make the HTTP PUT request, marshaling the request to XML
+            HttpEntity<CV> requestEntity = new HttpEntity<CV>(cv);
+            try {
+                /*HttpHeaders headers = new HttpHeaders();
+                headers.set("Connection", "Close");*/
+                ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
+                message = response.getBody();
+               /* Toast.makeText(
+                        getApplicationContext(),
+                        response.getBody(),
+                        Toast.LENGTH_LONG
+                ).show();*/
+               /* if (response.getBody().equals("Ajout effectué avec succès !")) {
+                    final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
+                    final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
+                    Button add = (Button) findViewById(R.id.creer);
+                    add.setClickable(false);
+                    add.setEnabled(false);
+                    Button retour = (Button) view.findViewById(R.id.retour);
+                    retour.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
+                            startActivity(i);
+                        }
+                    });
+                    boutonLayout.addView(view);
+                }*/
+            } catch (Exception e) {
+                StringWriter stringWriter = new StringWriter();
+                String stackTrace = null;
+                e.printStackTrace(new PrintWriter(stringWriter));
+                stackTrace = stringWriter.toString();
+                Log.i("TEST",  stackTrace);
+                message = "Erreur lors de l'ajout du cv";
+            }
             return null;
         }
 
+                /*
+                ImageButton supp = (ImageButton) view.findViewById(R.id.suppr);
+                supp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        diplome.removeView(view);
+                    }
+
+                });*/
+
+           /* } catch (Exception e) {
+            //    Log.i("TEST", e.getMessage());
+                StringWriter stringWriter = new StringWriter();
+                String stackTrace = null;
+                e.printStackTrace(new PrintWriter(stringWriter));
+                stackTrace = stringWriter.toString();
+                Log.i("TEST",  stackTrace);
+                Toast.makeText(
+                        getApplicationContext(),
+                        "Erreur lors de l'ajout du CV",
+                        Toast.LENGTH_LONG
+                ).show();
+            return null;
+        }
+        */
         @Override
         protected void onPostExecute(Object result) {
-
+            if (message.equals("Ajout effectué avec succès !")) {
+                final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
+                final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
+                Button add = (Button) findViewById(R.id.creer);
+                add.setClickable(false);
+                add.setEnabled(false);
+                Button retour = (Button) view.findViewById(R.id.retour);
+                retour.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
+                        startActivity(i);
+                    }
+                });
+                boutonLayout.addView(view);
+            }
+            Toast.makeText(
+                    getApplicationContext(),
+                    message,
+                    Toast.LENGTH_LONG
+            ).show();
             //Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
         }
 
+        /*
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -561,17 +659,18 @@ public class AddCVActivity extends Activity {
             super.onProgressUpdate(values);
         }
 
+    }*/
     }
 
-    private void connect() {
+    private void connect(){
 
         restTemplate = new RestTemplate();
-        // Add the Simple XML message converter
+
+        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
         restTemplate.getMessageConverters().add(new SimpleXmlHttpMessageConverter());
 
-       // cv = restTemplate.getForObject(url, CV.class);
+    }
 
-    }*/
 
     public void addMentionItemsOnSpinner(View view) {
 

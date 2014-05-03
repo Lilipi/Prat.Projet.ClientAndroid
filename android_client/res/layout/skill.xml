@@ -8,7 +8,7 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nom" android:hint="Nom" android:singleLine="true" android:inputType="textCapWords"/>
+            android:id="@+id/nom" android:hint="Nom" android:singleLine="true" android:inputType="textCapSentences"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
