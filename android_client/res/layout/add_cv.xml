@@ -19,14 +19,14 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapWords|textPersonName"
                     android:ems="10"
                     android:id="@+id/nom" android:hint="Nom" android:singleLine="true"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/prenom" android:singleLine="true"
-                    android:inputType="text" android:hint="Prénom"/>
+                    android:inputType="textCapWords" android:hint="Prénom"/>
 
             <TextView
                     android:layout_width="wrap_content"
