@@ -372,26 +372,19 @@ public class AddCVActivity extends Activity {
         @Override
         protected void onPostExecute(Object result) {
             if (message.equals("Ajout effectué avec succès !")) {
-                final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
-                final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
-                Button add = (Button) findViewById(R.id.creer);
-                add.setClickable(false);
-                add.setEnabled(false);
-                Button retour = (Button) view.findViewById(R.id.retour);
-                retour.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
-                        startActivity(i);
-                    }
-                });
-                boutonLayout.addView(view);
+                Toast.makeText(
+                        getApplicationContext(),
+                        message,
+                        Toast.LENGTH_LONG
+                ).show();
+                finish();
+            } else {
+                Toast.makeText(
+                        getApplicationContext(),
+                        message,
+                        Toast.LENGTH_LONG
+                ).show();
             }
-            Toast.makeText(
-                    getApplicationContext(),
-                    message,
-                    Toast.LENGTH_LONG
-            ).show();
 
         }
 
