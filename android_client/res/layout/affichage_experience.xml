@@ -15,12 +15,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/duree"/>
+            android:id="@+id/duree" android:textStyle="italic"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/entreprise"/>
+            android:id="@+id/entreprise" android:textStyle="bold|italic"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

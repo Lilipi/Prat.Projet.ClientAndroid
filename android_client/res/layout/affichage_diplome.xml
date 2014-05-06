@@ -24,33 +24,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/debut"/>
+                android:id="@+id/debut" android:textStyle="italic"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" - "
-                android:id="@+id/textView"/>
+                android:id="@+id/textView" android:textStyle="italic"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/fin"/>
+                android:id="@+id/fin" android:textStyle="italic"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" à "
-                android:id="@+id/textView2"/>
+                android:id="@+id/textView2" android:textStyle="italic"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/location"/>
+                android:id="@+id/location" android:textStyle="italic"/>
     </LinearLayout>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/school"/>
+            android:id="@+id/school" android:textStyle="bold|italic"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
