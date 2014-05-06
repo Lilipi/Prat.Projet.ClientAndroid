@@ -40,7 +40,7 @@ public class AddCVActivity extends Activity {
     private final static int MIN_ANNEE = 1900;
 
     // The connection URL
-    private String url = "http://cv.lilipi.cloudbees.net/cv/put";
+    private String url = "http://cv.lilipi.cloudbees.net/cv";
 
     private LinearLayout mLayout;
     private ImageButton mButton;

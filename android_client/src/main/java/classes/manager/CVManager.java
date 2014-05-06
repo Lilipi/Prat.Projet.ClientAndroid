@@ -21,7 +21,10 @@ public class CVManager {
         return cv;
     }
 
-    public void addCv(CV cv) {this.cv.add(cv);}
+    public void addCv(CV cv) {
+        cv.setId(this.cv.size());
+        this.cv.add(cv);
+    }
 
     public void setCv(List<CV> cv) {
         this.cv = cv;

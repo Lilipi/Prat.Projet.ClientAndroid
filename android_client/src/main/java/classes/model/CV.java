@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlType;
 @Root(name="cv")
 public class CV {
 
+    @Element(required=false)
+    int id;
     @Element
     String nom;
     @Element
@@ -87,6 +89,14 @@ public class CV {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public CV() {
