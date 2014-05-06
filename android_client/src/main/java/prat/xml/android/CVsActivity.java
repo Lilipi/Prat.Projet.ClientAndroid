@@ -44,16 +44,13 @@ public class CVsActivity  extends Activity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              //  Toast.makeText(getApplicationContext(), " " + position, Toast.LENGTH_SHORT).show();
-                // On créé une activity
+
                 Intent i = new Intent(CVsActivity.this, CVActivity.class);
 
-                // On passe des arguments
                 Bundle bundle = new Bundle();
                 bundle.putInt("id", position);
                 i.putExtras(bundle);
 
-                // On la démarre
                 startActivity(i);
             }
         });
@@ -79,7 +76,7 @@ public class CVsActivity  extends Activity {
             if (progress.isShowing()) {
                 progress.dismiss();
             }
-            //Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
@@ -88,7 +85,6 @@ public class CVsActivity  extends Activity {
             progress = new ProgressDialog(CVsActivity.this);
             progress.setMessage("Chargement en cours...");
             progress.show();
-            //Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
         }
 
         @Override

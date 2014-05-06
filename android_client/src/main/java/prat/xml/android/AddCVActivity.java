@@ -60,12 +60,6 @@ public class AddCVActivity extends Activity {
         mois++;
 
         setContentView(R.layout.add_cv);
-       /* restTemplate = new RestTemplate();
-
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        restTemplate.getMessageConverters().add(new SimpleXmlHttpMessageConverter());
-
-        */
 
         mLayout = (LinearLayout) findViewById(R.id.addDiplome);
         mButton = (ImageButton) findViewById(R.id.add2);
@@ -163,17 +157,7 @@ public class AddCVActivity extends Activity {
 
                 String nom = ((EditText)findViewById(R.id.nom)).getText().toString();
 
-            /*    if (nom == null || nom.length() == 0) {
-                    error = true;
-                    msg += "Le champs Nom est obligatoire.\n";
-                }*/
-
                 String prenom = ((EditText)findViewById(R.id.prenom)).getText().toString();
-
-               /* if (prenom == null || prenom.length() == 0) {
-                    error = true;
-                    msg += "Le champs Prénom est obligatoire.\n";
-                }*/
 
                 LinearLayout diplomes = (LinearLayout) findViewById(R.id.addDiplome);
                 int childCount = diplomes.getChildCount();
@@ -184,24 +168,10 @@ public class AddCVActivity extends Activity {
 
                     String titre = ((EditText)view.findViewById(R.id.titre)).getText().toString();
 
-                   /* if (titre == null || titre.length() == 0) {
-                        error = true;
-                        msg += "Le champs Titre du diplôme " + (i+1) + " est obligatoire.\n";
-                    }*/
-
                     int fin;
 
                     if (((EditText)view.findViewById(R.id.fin)).getText() != null && !(((EditText)view.findViewById(R.id.fin)).getText().toString().length() == 0) ) {
                         fin = Integer.parseInt(((EditText)view.findViewById(R.id.fin)).getText().toString());
-                      /*  if (fin > annee) {
-                            error = true;
-                            msg += "La fin du diplôme " + (i + 1) + " doit être antérieur à la date du jour ou vide si en cours. \n";
-                        }
-                        if (fin < MIN_ANNEE) {
-                            error = true;
-                            msg += "La fin du diplôme " + (i + 1) + " doit être postérieure à " + MIN_ANNEE + " \n";
-
-                        }*/
 
                     } else {
                         //Diplôme en cours
@@ -212,21 +182,6 @@ public class AddCVActivity extends Activity {
                     if (((EditText) view.findViewById(R.id.debut)).getText().toString() != null && !(((EditText) view.findViewById(R.id.debut)).getText().toString().length() == 0)) {
                         debut = Integer.parseInt(((EditText) view.findViewById(R.id.debut)).getText().toString());
 
-                      /* if (debut > annee) {
-                            error = true;
-                            msg += "Le Début du diplôme " + (i + 1) + " doit être antérieur à la date du jour. \n";
-                       }
-                       if (debut > fin && fin != 0) {
-                            error = true;
-                            msg += "Le Début du diplôme " + (i + 1) + " doit être antérieur à sa fin. \n";
-                       }
-
-                       if (debut < MIN_ANNEE) {
-                            error = true;
-                            msg += "Le début du diplôme " + (i + 1) + " doit être postérieure à " + MIN_ANNEE + " \n";
-
-                       }*/
-
                     } else {
                         error = true;
                         msg += "Le champs Début du diplôme " + (i + 1) + " est obligatoire. \n";
@@ -236,17 +191,7 @@ public class AddCVActivity extends Activity {
 
                     String lieu = ((EditText)view.findViewById(R.id.lieu)).getText().toString();
 
-                  /*  if (lieu == null || lieu.length() == 0) {
-                        error = true;
-                        msg += "Le champs Lieu du diplôme " + (i+1) + " est obligatoire.\n";
-                    }*/
-
                     String ecole = ((EditText)view.findViewById(R.id.ecole)).getText().toString();
-
-                    /*if (ecole == null || ecole.length() == 0) {
-                        error = true;
-                        msg += "Le champs Ecole du diplôme " + (i+1) + " est obligatoire.\n";
-                    }*/
 
                     String description = ((EditText)view.findViewById(R.id.description)).getText().toString();
 
@@ -254,21 +199,6 @@ public class AddCVActivity extends Activity {
                     degList.add(d);
                 }
                 DegreeManager deg = new DegreeManager(degList);
-
-               /* Map<String, Integer> months = new HashMap<String, Integer>();
-                months.put("En cours",0);
-                months.put("Janvier", 1);
-                months.put("Février", 2);
-                months.put("Mars", 3);
-                months.put("Avril", 4);
-                months.put("Mai", 5);
-                months.put("Juin", 6);
-                months.put("Juillet", 7);
-                months.put("Août", 8);
-                months.put("Septembre", 9);
-                months.put("Octobre", 10);
-                months.put("Novembre", 11);
-                months.put("Décembre", 12);*/
 
                 LinearLayout experiences = (LinearLayout) findViewById(R.id.addExp);
                 int count = experiences.getChildCount();
@@ -279,11 +209,6 @@ public class AddCVActivity extends Activity {
 
                     String titre = ((EditText)view.findViewById(R.id.titre)).getText().toString();
 
-                   /* if (titre == null || titre.length() == 0) {
-                        error = true;
-                        msg += "Le champs Titre de l'expérience " + (i+1) + " est obligatoire.\n";
-                    }*/
-
                     String debutM = ((Spinner)view.findViewById(R.id.spinnerDebut)).getSelectedItem().toString();
 
                     String finM = ((Spinner)view.findViewById(R.id.spinnerFin)).getSelectedItem().toString();
@@ -291,15 +216,6 @@ public class AddCVActivity extends Activity {
                     int fin;
                     if (((EditText)view.findViewById(R.id.finAnnee)).getText().toString() != null && !(((EditText)view.findViewById(R.id.finAnnee)).getText().toString().length() == 0) ) {
                         fin = Integer.parseInt(((EditText)view.findViewById(R.id.finAnnee)).getText().toString());
-                       /* if (fin > annee) {
-                            error = true;
-                            msg += "La fin de l'expérience " + (i + 1) + " doit être antérieur à la date du jour ou vide si en cours. \n";
-                        }
-                        if (fin < MIN_ANNEE) {
-                            error = true;
-                            msg += "La fin de l'expérience " + (i + 1) + " doit être postérieure à " + MIN_ANNEE + " \n";
-
-                        }*/
                     } else {
                         fin = 0;
                     }
@@ -307,35 +223,6 @@ public class AddCVActivity extends Activity {
                     int debut = 0;
                     if (((EditText) view.findViewById(R.id.debutAnnee)).getText().toString() != null && !(((EditText) view.findViewById(R.id.debutAnnee)).getText().toString().length() == 0)) {
                         debut = Integer.parseInt(((EditText) view.findViewById(R.id.debutAnnee)).getText().toString());
-
-                      /*  if (debut > fin && fin != 0) {
-                            error = true;
-                            msg += "Le Début de l'expérience " + (i + 1) + " doit être antérieur à sa date de fin. \n";
-                        }
-                        if (debut == fin && fin != 0) {
-                            if (months.get(debutM) > months.get(finM) && months.get(finM) != 0) {
-                                error = true;
-                                msg += "Le Début de l'expérience " + (i + 1) + " doit être antérieur à sa date de fin. \n";
-                            }
-                        }
-                        if (debut  > annee) {
-                            error = true;
-                            msg += "Le début du diplôme " + (i + 1) + " doit être antérieur à la date du jour. \n";
-                        }
-                        if (debut == annee && months.get(debutM) > mois) {
-                            error = true;
-                            msg += "Le Début de l'expérience " + (i + 1) + " doit être antérieur à la date du jour. \n";
-                        }
-                        if (fin == annee && months.get(finM) > mois) {
-                            error = true;
-                            msg += "La fin de l'expérience " + (i + 1) + " doit être antérieur à la date du jour ou vide si en cours. \n";
-                        }
-
-                        if (debut < MIN_ANNEE) {
-                            error = true;
-                            msg += "Le début de l'expérience " + (i + 1) + " doit être postérieure à " + MIN_ANNEE + " \n";
-
-                        }*/
 
                     } else {
                         error = true;
@@ -345,17 +232,9 @@ public class AddCVActivity extends Activity {
 
                     String lieu = ((EditText)view.findViewById(R.id.lieu)).getText().toString();
 
-                  /*  if (lieu == null || lieu.length() == 0) {
-                        error = true;
-                        msg += "Le champs Lieu de l'expérience " + (i+1) + " est obligatoire.\n";
-                    }*/
 
                     String entreprise = ((EditText)view.findViewById(R.id.entreprise)).getText().toString();
 
-                   /* if (entreprise == null || entreprise.length() == 0) {
-                        error = true;
-                        msg += "Le champs Entreprise de l'expérience " + (i+1) + " est obligatoire.\n";
-                    }*/
 
                     String description = ((EditText)view.findViewById(R.id.description)).getText().toString();
 
@@ -376,11 +255,6 @@ public class AddCVActivity extends Activity {
 
                     String titre = ((EditText)view.findViewById(R.id.nom)).getText().toString();
 
-                  /*  if (titre == null || titre.length() == 0) {
-                        error = true;
-                        msg += "Le champs Titre de la compétence " + (i+1) + " est obligatoire.\n";
-                    }*/
-
                     float level = ((RatingBar)view.findViewById(R.id.ratingBar)).getRating();
 
                     Skill s = new Skill(titre, level);
@@ -398,11 +272,6 @@ public class AddCVActivity extends Activity {
                     View view = languages.getChildAt(i);
 
                     String titre = ((EditText)view.findViewById(R.id.nom)).getText().toString();
-
-                   /* if (titre == null || titre.length() == 0) {
-                        error = true;
-                        msg += "Le champs Titre de la langue " + (i+1) + " est obligatoire.\n";
-                    }*/
 
                     float level = ((RatingBar)view.findViewById(R.id.ratingBar)).getRating();
 
@@ -422,56 +291,6 @@ public class AddCVActivity extends Activity {
 
                     new Connection().execute();
 
-                    // Make the HTTP PUT request, marshaling the request to XML
-                   /* HttpEntity<CV> requestEntity = new HttpEntity<CV>(cv);
-                    try {
-                        Log.i("TEST", "try");
-                        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
-                        Toast.makeText(
-                                getApplicationContext(),
-                                response.getBody(),
-                                Toast.LENGTH_LONG
-                        ).show();
-                        if (response.getBody().equals("Ajout effectué avec succès !")) {
-                            final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
-                            final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
-                            Button add = (Button) findViewById(R.id.creer);
-                            add.setClickable(false);
-                            add.setEnabled(false);
-                            Button retour = (Button) view.findViewById(R.id.retour);
-                            retour.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
-                                    startActivity(i);
-                                }
-                            });
-                            boutonLayout.addView(view);
-                        }
-
-                        /*
-                        ImageButton supp = (ImageButton) view.findViewById(R.id.suppr);
-                        supp.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                diplome.removeView(view);
-                            }
-
-                        });*/
-
-                   /* } catch (Exception e) {
-                    //    Log.i("TEST", e.getMessage());
-                        StringWriter stringWriter = new StringWriter();
-                        String stackTrace = null;
-                        e.printStackTrace(new PrintWriter(stringWriter));
-                        stackTrace = stringWriter.toString();
-                        Log.i("TEST",  stackTrace);
-                        Toast.makeText(
-                                getApplicationContext(),
-                                "Erreur lors de l'ajout du CV",
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }*/
                 } else {
                     Toast.makeText(
                             getApplicationContext(),
@@ -482,8 +301,6 @@ public class AddCVActivity extends Activity {
 
             }
         });
-
-//        new Connection().execute();
 
     }
 
@@ -522,30 +339,6 @@ public class AddCVActivity extends Activity {
 
         fin.setAdapter(dataAdapter);
     }
-/*
-    private EditText createNewEditText(String text, int i) {
-        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final EditText textView = new EditText(this);
-        textView.setLayoutParams(lparams);
-        textView.setText(text);
-        textView.setId(i);
-        if (text == "Description") {
-            textView.setSingleLine(false);
-        } else {
-            textView.setSingleLine(true);
-        }
-        return textView;
-    }
-
-    private TextView createNewTextView(String text, int i) {
-        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        final TextView textView = new TextView(this);
-        textView.setLayoutParams(lparams);
-        textView.setText(text);
-        textView.setId(i);
-
-        return textView;
-    }*/
 
     private class Connection extends AsyncTask {
 
@@ -560,31 +353,10 @@ public class AddCVActivity extends Activity {
             // Make the HTTP PUT request, marshaling the request to XML
             HttpEntity<CV> requestEntity = new HttpEntity<CV>(cv);
             try {
-                /*HttpHeaders headers = new HttpHeaders();
-                headers.set("Connection", "Close");*/
+
                 ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
                 message = response.getBody();
-               /* Toast.makeText(
-                        getApplicationContext(),
-                        response.getBody(),
-                        Toast.LENGTH_LONG
-                ).show();*/
-               /* if (response.getBody().equals("Ajout effectué avec succès !")) {
-                    final LinearLayout boutonLayout = (LinearLayout)findViewById(R.id.boutonLayout);
-                    final View view = View.inflate(AddCVActivity.this, R.layout.retour, null);
-                    Button add = (Button) findViewById(R.id.creer);
-                    add.setClickable(false);
-                    add.setEnabled(false);
-                    Button retour = (Button) view.findViewById(R.id.retour);
-                    retour.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i = new Intent(AddCVActivity.this, ActivityMain.class);
-                            startActivity(i);
-                        }
-                    });
-                    boutonLayout.addView(view);
-                }*/
+
             } catch (Exception e) {
                 StringWriter stringWriter = new StringWriter();
                 String stackTrace = null;
@@ -596,31 +368,7 @@ public class AddCVActivity extends Activity {
             return null;
         }
 
-                /*
-                ImageButton supp = (ImageButton) view.findViewById(R.id.suppr);
-                supp.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        diplome.removeView(view);
-                    }
 
-                });*/
-
-           /* } catch (Exception e) {
-            //    Log.i("TEST", e.getMessage());
-                StringWriter stringWriter = new StringWriter();
-                String stackTrace = null;
-                e.printStackTrace(new PrintWriter(stringWriter));
-                stackTrace = stringWriter.toString();
-                Log.i("TEST",  stackTrace);
-                Toast.makeText(
-                        getApplicationContext(),
-                        "Erreur lors de l'ajout du CV",
-                        Toast.LENGTH_LONG
-                ).show();
-            return null;
-        }
-        */
         @Override
         protected void onPostExecute(Object result) {
             if (message.equals("Ajout effectué avec succès !")) {
@@ -644,22 +392,9 @@ public class AddCVActivity extends Activity {
                     message,
                     Toast.LENGTH_LONG
             ).show();
-            //Toast.makeText(getApplicationContext(), "Chargement terminé", Toast.LENGTH_SHORT).show();
+
         }
 
-        /*
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-           // Toast.makeText(getApplicationContext(), "Début du téléchargement", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected void onProgressUpdate(Object... values){
-            super.onProgressUpdate(values);
-        }
-
-    }*/
     }
 
     private void connect(){
